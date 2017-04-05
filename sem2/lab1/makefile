@@ -1,3 +1,6 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -Wpedantic -g
+
 all: arr_sum_recursive simple_stack simple_stack_var reverse_arr float_data_idx float_data_ptr sort_even_odd move_right
 
 arr_sum_recursive: arr_sum_recursive.c
