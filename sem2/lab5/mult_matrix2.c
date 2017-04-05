@@ -41,5 +41,7 @@ int main() {
   for (int i = 0; i < ROWS; ++i)
     print_arr((int (*)[COLS])arr_c[i], 1);
 
+  free(arr_c);
+
   return 0;
 }
