@@ -1,16 +1,19 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Wpedantic -g
+CFLAGS = -Wall -Wextra -Wpedantic -g -std=c11
 
-all: 1 2 3 4
+all: float_dyn_arr count_floor sort_unique recursion
 
-1: 1.c
-	$(CC) $(CFLAGS)-o 1 -std=c11 1.c
+float_dyn_arr: float_dyn_arr.c
+	$(CC) $(CFLAGS)-o float_dyn_arr float_dyn_arr float_dyn_arr.c
 
-2: 2.c
-	$(CC) $(CFLAGS)-o 2 -std=c11 2.c
+count_floor: count_floor.c
+	$(CC) $(CFLAGS)-o count_floor float_dyn_arr count_floor.c
 
-3: 3.c
-	$(CC) $(CFLAGS)-o 3 -std=c11 3.c -lm
+sort_unique: sort_unique.c
+	$(CC) $(CFLAGS)-o sort_unique float_dyn_arr sort_unique.c -lm
 
-4: 4.c
-	$(CC) $(CFLAGS)-o 4 -std=c11 4.c
+recursion: recursion.c
+	$(CC) $(CFLAGS)-o recursion float_dyn_arr recursion.c
+
+clean: float_dyn_arr count_floor sort_unique recursion
+	rm float_dyn_arr count_floor sort_unique recursion.c
