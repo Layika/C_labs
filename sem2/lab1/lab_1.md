@@ -2,10 +2,6 @@
 
 ## Laboratorium 1
 
-<span style="font-family: 'Lucida Console'">Programy <font color="red">pliki źódłowe</font> proszę wysłać przed końcem zajęć na adres <font color="green">grazyna@fis.agh.edu.pl</font>
-
-W tytule maila proszę napisać - <font color="green">IS_LAB_1</font> , a w treści proszę podać <font color="green">imię i nazwisko</font></span>
-
 <div align="center">
 
 ## Zadania
