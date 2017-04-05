@@ -33,6 +33,10 @@ int main() {
 
   puts("Multiplying:");
   int** arr_c =  mult_matrix(2, 3, 4, arr_a, arr_b);
+  if (!arr_c) {
+    puts("Allocation failed!");
+    exit(-1);
+  }
 
   for (int i = 0; i < ROWS; ++i)
     print_arr((int (*)[COLS])arr_c[i], 1);
