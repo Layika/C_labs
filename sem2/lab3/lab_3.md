@@ -33,7 +33,7 @@
                printf ("\n");
             }
 
-    7.  <font color="#ff0080">( 2 )</font> Proszę napisać funkcję liczącą sumę wartości liczb zapisanych w wybranej tablicy** `T_x`** - dostęp do tablicy ma być zrealizowany przy użyciu wskaźnika `**TAB**` . Wywo�anie funkcji powinno wyglądać następująco **`suma (TAB, numer_tablicy, dlugosc_tablicy)`**.
+    7.  <font color="#ff0080">( 2 )</font> Proszę napisać funkcję liczącą sumę wartości liczb zapisanych w wybranej tablicy** `T_x`** - dostęp do tablicy ma być zrealizowany przy użyciu wskaźnika `**TAB**` . Wywołanie funkcji powinno wyglądać następująco **`suma (TAB, numer_tablicy, dlugosc_tablicy)`**.
 
     10.  <font color="#ff0080">( 3 )</font> Proszę napisać funkcję zwracającą wskaźnik do tablicy, która ma najmniejszą sumę elementów - należy skorzystać z funkji z poprzedniego punktu
 
