@@ -13,7 +13,7 @@ int main() {
   int counter = 0;
 
   printf("Provide at most %d rows.\n", MAX_ROWS);
-  printf("Aby zakonczyc, wcisnij Enter na poczatku wiersza.\n");
+  printf("When finished press enter at the beginning of a new line.\n");
 
   while (counter < MAX_ROWS && gets(data[counter]) != NULL && data[counter][0] != '\0') {
      strings_ptr[counter] = data[counter];
