@@ -28,7 +28,7 @@ vector_mult: vector_mult.c
 	$(CC) $(CFLAGS) -o vector_mult vector_mult.c
 
 vector_params: vector_params.c
-	$(CC) $(CFLAGS) -o vector_params vector_params.c
+	$(CC) $(CFLAGS) -o vector_params vector_params.c -lm
 
 clean: sort_qsort qsort_bsearch biggest_val vector_3d vector_length add_vectors scalar_mult vector_mult vector_params
 	rm sort_qsort qsort_bsearch biggest_val vector_3d vector_length add_vectors scalar_mult vector_mult vector_params
