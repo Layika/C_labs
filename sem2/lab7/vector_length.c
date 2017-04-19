@@ -15,16 +15,19 @@ double count_length(double x, double y, double z) {
     return sqrt(x*x + y*y + z*z);
 }
 
+void get_coordinates(vector* v) {
+    puts("Provide coordinates for vector:");
+    printf(" x = ");
+    scanf("%lf", &v->x);
+    printf(" y = ");
+    scanf("%lf", &v->y);
+    printf(" z = ");
+    scanf("%lf", &v->z);
+}
+
 int main() {
     vector v;
-
-    puts("Provide coordinates for v:");
-    printf(" x = ");
-    scanf("%lf", &v.x);
-    printf(" y = ");
-    scanf("%lf", &v.y);
-    printf(" z = ");
-    scanf("%lf", &v.z);
+    get_coordinates(v);
     print_vector(v);
 
     printf("Vector v length: %lf.\n", count_length(v.x, v.y, v.z));
