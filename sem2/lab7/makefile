@@ -7,7 +7,7 @@ sort_qsort: sort_qsort.c
 	$(CC) $(CFLAGS) -o sort_qsort sort_qsort.c
 
 qsort_bsearch: qsort_bsearch.c
-	$(CC) $(CFLAGS) -o qsort_bsearch qsort_bsearch.c
+	$(CC) $(CFLAGS) -o qsort_bsearch qsort_bsearch.c -lm
 
 biggest_val: biggest_val.c
 	$(CC) $(CFLAGS) -o biggest_val biggest_val.c -lm
