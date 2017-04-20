@@ -9,11 +9,7 @@ int  cmp_double(const void* a, const void* b) {
     return ((*(const double*)a > *(const double*)b) - (*(const double*)b > *(const double*)a ));
 }
 
-int cmp_str_bsearch(const void* a, const void* b) {
-    return strcmp((const char*)a, *(const char**)b);  
-}
-
-int cmp_str_qsort(const void* a, const void* b) {
+int cmp_strings(const void* a, const void* b) {
     return strcmp(*(const char**)a, *(const char**)b);
 }
 
@@ -57,13 +53,14 @@ void sort_strings_arr() {
     print_strings_arr(strings, len);
 
     puts("After sorting strings:");
-    qsort(strings, len, sizeof(strings[0]), cmp_str_qsort);
+    qsort(strings, len, sizeof(strings[0]), cmp_strings);
     print_strings_arr(strings, len);
 
     puts("Provide a string to find in array:");
     char check[STRING_LENGTH];
-    scanf("%20s", check);
-    if (bsearch(check, strings, len, sizeof(strings[0]), cmp_str_bsearch))
+    char* key = check;    // without this we would need to malloc space for check or write different cmp func for bsearch
+    scanf("%20s", check); // return strcmp((const char*)a, *(const char**)b);
+    if (bsearch(&key, strings, len, sizeof(strings[0]), cmp_strings))
         printf("Strings array contains %s.\n", check);
 }
 
