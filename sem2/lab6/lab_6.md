@@ -97,7 +97,7 @@ void sortlan(char *lan[], int num)
 FORMAT %.0lf ->3
 FORMAT %.2lf ->3.14
 FORMAT %.4lf ->3.1416
-FORMAT %.6lf ->3.141593</font> </pre>
+FORMAT %.6lf ->3.141593 </pre>
 ```
 
 ```
