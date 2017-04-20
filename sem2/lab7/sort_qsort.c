@@ -5,12 +5,11 @@
 #define SIZE 12
 
 int  cmp_double(const void* a, const void* b) {
-    if(*(const double*)a > *(const double*)b)
-        return 1;
-    if (*(const double*)a < *(const double*)b)
-        return -1;
-    else return 0;
+    return ((*(const double*)a > *(const double*)b) - (*(const double*)b > *(const double*)a ));
 }
+
+// bsearch (const char*), *(const char**)*
+// qsort *(const char**)a, *(const char**)b
 
 int cmp_strings(const void* a, const void* b) {
     return strcmp(*(const char**)a, *(const char**)b);

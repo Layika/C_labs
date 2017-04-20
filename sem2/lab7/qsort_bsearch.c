@@ -6,11 +6,7 @@
 #define STRING_LENGTH 20
 
 int  cmp_double(const void* a, const void* b) {
-    if (*(const double*)a > *(const double*)b)
-        return 1;
-    if (*(const double*)a < *(const double*)b)
-        return -1;
-    else return 0;
+    return ((*(const double*)a > *(const double*)b) - (*(const double*)b > *(const double*)a ));
 }
 
 int cmp_strings(const void* a, const void* b) {
