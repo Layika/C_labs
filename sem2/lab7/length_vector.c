@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 typedef struct vector {
     double x;
@@ -8,6 +9,10 @@ typedef struct vector {
 
 void print_vector(vector* v) {
     printf("[ %.1lf, %.1lf, %.1lf ]\n", v->x, v->y, v->z);
+}
+
+double count_length(double x, double y, double z) {
+    return sqrt(x*x + y*y + z*z);
 }
 
 void get_coordinates(vector* v) {
@@ -21,14 +26,10 @@ void get_coordinates(vector* v) {
 }
 
 int main() {
-    vector v1;
-    vector v2;
+    vector v;
+    get_coordinates(&v);
+    print_vector(&v);
 
-    get_coordinates(&v1);
-    print_vector(&v1);
-
-    get_coordinates(&v2);
-    print_vector(&v2);
-
+    printf("Vector v length: %lf.\n", count_length(v.x, v.y, v.z));
     return 0;
 }

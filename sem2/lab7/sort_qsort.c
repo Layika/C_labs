@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define SIZE 12
+
 int  cmp_double(const void* a, const void* b) {
     if(*(const double*)a > *(const double*)b)
         return 1;
@@ -29,7 +31,7 @@ void print_strings_arr(char** arr, size_t size) {
 }
 
 void sort_double_arr() {
-    double numbers[11] = { 7.4, 1.3, 14.5, 0.1, -1.0, 2.3, 1.2, 43.0, 2.0, -4.7, 5.8 };
+    double numbers[SIZE] = { 7.4, 1.3, 14.5, 0.1, -1.0, 2.3, 1,2, 43.0, 2.0, -4.7, 5.8 };
     size_t len = sizeof(numbers) / sizeof(numbers[0]);
 
     puts("Before sorting double:");
