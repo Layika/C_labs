@@ -2,43 +2,6 @@
 
 ## Laboratorium 7
 
-* * *
-
-    void qsort(void * base,size_t num, size_t width,int( * compare )( const void *, const void * ));
-
-*   **const void *base** - wskaźnik na tablicę, która ma zostać posortowana.
-*   **size_t num** - liczba elementów w tablicy.
-*   **size_t width** - liczba bajtów zajmowanych przez jeden element tablicy.
-*   **int (*compare ) ( const void *, const void *)** - funkcja porównująa elementy tablicy. Do argumentów przedmiotowej funkcji trafiają wskaźniki na elementy obecnie porównywane.  
-    Funkcja przekazana jako argument **compare** powinna zwracać następujące wartości:
-    *   mniejsze od 0 - gdy wartość argumentu pierwszego jest mniejsza od argumentu drugiego;
-    *   równe 0 - gdy wartośćargumentu pierwszego jest równa wartości argumentu drugiego;
-    *   większe od 0 - gdy wartość argumentu pierwszego jest większa od argumentu drugiego.
-
-* * *
-
-    void *bsearch(const void *key, const void *base, size t nmemb, size t size, int (*compar)(const void *, const void *));
-
-Funkcja zwraca wskaźnik na element tablicy **base**, pasujący do szukanego klucza **key**. Jeżeli klucz nie został znaleziony, funkcja zwraca wartość NULL. Jeżeli tablica nie jest posortowana rosnąco lub zawiera elementy posiadające zduplikowane klucze to wynik funkcji jest nieprzewidywalny.
-
-*   **const void *key** - poszukiwany klucz.
-*   **const void *base** - wskaźnik na posortowaną tablicę, która ma zostać przeszukana.
-*   **size_t num** - liczba elementów w tablicy.
-*   **size_t width** - liczba bajtów zajmowanych przez jeden element tablicy.
-*   **int (*compare ) ( const void *, const void *)** - funkcja porównująca klucze. Do pierwszego argumentu przedmiotowej funkcji trafia wskaźnik na element poszukiwany key, natomiast do drugiego wskaźnik na element tablicy base z którym ma nastąpić porównanie..  
-    Funkcja przekazana jako argument **compare** powinna zwracać następujące wartości:
-    *   mniejsze od 0 - gdy wartość argumentu pierwszego jest mniejsza od argumentu drugiego;
-    *   równe 0 - gdy wartośćargumentu pierwszego jest równa wartości argumentu drugiego;
-    *   większe od 0 - gdy wartość argumentu pierwszego jest większa od argumentu drugiego.
-
-* * *
-
-<span style="font-family: 'Lucida Console'">Programy <font color="red">pliki źródłowe</font> proszę wysłać przed końcem zajęć na adres <font color="green">grazyna@fis.agh.edu.pl</font>  
-
-W tytule maila proszę napisać - <font color="green">IS_LAB_7</font> , a w treści proszę podać <font color="green">imię i nazwisko</font></span>  
-
-<div align="center">
-
 ## Zadania
 
 </div>
