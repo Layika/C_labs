@@ -2,15 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#define EPSILON 0.00001
+
 #define STRING_LENGTH 20
 
 int  cmp_double(const void* a, const void* b) {
     return ((*(const double*)a > *(const double*)b) - (*(const double*)b > *(const double*)a ));
 }
 
-int cmp_strings(const void* a, const void* b) {
-    return strcmp((const char*)a, *(const char**)b);
+int cmp_str_bsearch(const void* a, const void* b) {
+    return strcmp((const char*)a, *(const char**)b);  
+}
+
+int cmp_str_qsort(const void* a, const void* b) {
+    return strcmp(*(const char**)a, *(const char**)b);
 }
 
 void print_double_arr(double* arr, size_t size) {
@@ -53,14 +57,14 @@ void sort_strings_arr() {
     print_strings_arr(strings, len);
 
     puts("After sorting strings:");
-    qsort(strings, len, sizeof(strings[0]), cmp_strings);
+    qsort(strings, len, sizeof(strings[0]), cmp_str_qsort);
     print_strings_arr(strings, len);
 
     puts("Provide a string to find in array:");
     char check[STRING_LENGTH];
     scanf("%20s", check);
-    if (bsearch(check, strings, len, sizeof(strings[0]), cmp_strings))
-        printf("Numbers array contains %s.\n", check);
+    if (bsearch(check, strings, len, sizeof(strings[0]), cmp_str_bsearch))
+        printf("Strings array contains %s.\n", check);
 }
 
 int main() {
