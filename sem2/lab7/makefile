@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Wpedantic -g -std=c11
 
-all: sort_qsort qsort_bsearch biggest_val vector_3d length_vector add_vectors scalar_mult mult_vector params_vector
+all: sort_qsort qsort_bsearch biggest_val vector length_vector add_vectors scalar_mult mult_vector params_vector
 
 sort_qsort: sort_qsort.c
 	$(CC) $(CFLAGS) -o sort_qsort sort_qsort.c
@@ -12,8 +12,8 @@ qsort_bsearch: qsort_bsearch.c
 biggest_val: biggest_val.c
 	$(CC) $(CFLAGS) -o biggest_val biggest_val.c -lm
 
-vector_3d: vector_3d.c
-	$(CC) $(CFLAGS) -o vector_3d vector_3d.c
+vector: vector.c
+	$(CC) $(CFLAGS) -o vector vector.c
 
 length_vector: length_vector.c
 	$(CC) $(CFLAGS) -o length_vector length_vector.c -lm
@@ -30,5 +30,5 @@ mult_vector: mult_vector.c
 params_vector: params_vector.c
 	$(CC) $(CFLAGS) -o params_vector params_vector.c -lm
 
-clean: sort_qsort qsort_bsearch biggest_val vector_3d length_vector add_vectors scalar_mult mult_vector params_vector
-	rm sort_qsort qsort_bsearch biggest_val vector_3d length_vector add_vectors scalar_mult mult_vector params_vector
+clean: sort_qsort qsort_bsearch biggest_val vector length_vector add_vectors scalar_mult mult_vector params_vector
+	rm sort_qsort qsort_bsearch biggest_val vector length_vector add_vectors scalar_mult mult_vector params_vector

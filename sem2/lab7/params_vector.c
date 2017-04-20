@@ -30,14 +30,19 @@ void write_length(params* array, int size) {
 int main(int argc, char* argv[]) {
     srand(time(NULL));
 
-    if (argc < 2) {
-        printf("Usage: %s, <size>\n", argv[0]);
+    if (argc < 2 || atoi(argv[1]) == 0) {
+        printf("Usage: %s, <size > 0>\n", argv[0]);
         exit(-1);
     }
 
     int size = atoi(argv[1]);
 
     params* array = malloc(size * sizeof(params));
+    if (array == NULL) {
+        puts("Allocation failed!");
+        exit(-1);
+    }
+
     for (int i = 0; i < size; ++i) {
         array[i].v.x = rand() % 10;
         array[i].v.y = rand() % 10;
@@ -51,5 +56,6 @@ int main(int argc, char* argv[]) {
         printf("len: %lf\n", array[i].len);
     }
 
+    free(array);
     return 0;
 }
