@@ -36,6 +36,7 @@ void free_structs(client** clients, size_t size) {
     for (size_t i = 0; i < size; ++i) {
         free(clients[i]->first_name);
         free(clients[i]->last_name);
+        free(clients[i]->age);
         free(clients[i]->zip_code);
         free(clients[i]);
     }
