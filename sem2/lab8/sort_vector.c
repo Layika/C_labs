@@ -3,6 +3,8 @@
 #include <math.h>
 #include <time.h>
 
+#define EPS 0.00001
+
 typedef struct vector {
     double x;
     double y;
@@ -32,7 +34,9 @@ void write_length(params* array, int size) {
 int  cmp_len(const void* a, const void* b) {
     params* a1 = (params*)a;
     params* a2 = (params*)b;
-    return (((const double)a1->len > (const double)a2->len) - ((const double)a2->len > (const double)a1->len ));
+
+    double v = (((const double)a1->len > (const double)a2->len) - ((const double)a2->len > (const double)a1->len));
+    return v < EPS? 0 : v;
 }
 
 int main(int argc, char* argv[]) {
@@ -66,7 +70,7 @@ int main(int argc, char* argv[]) {
     double check;
     scanf("%lf", &check);
     if (bsearch(&check, array, size, sizeof(array[0]), cmp_len))
-        printf("Numbers array contains %lf.\n", check);
+        printf("Numbers array contains vector of size %.2lf.\n", check);
 
     free(array);
 

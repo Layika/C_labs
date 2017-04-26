@@ -10,7 +10,7 @@ numbers: numbers.c
 	$(CC) $(CFLAGS) -o numbers numbers.c
 
 sort_vector: sort_vector.c
-	$(CC) $(CFLAGS) -o sort_vector sort_vector.c
+	$(CC) $(CFLAGS) -o sort_vector sort_vector.c -lm
 
 cellular_automaton: cellular_automaton.c
 	$(CC) $(CFLAGS) -o cellular_automaton cellular_automaton.c

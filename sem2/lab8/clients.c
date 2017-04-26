@@ -19,11 +19,11 @@ typedef struct client {
 void make_structs(client** clients, size_t size) {
     for (size_t i = 0; i < size; ++i) {
 
-        clients[i] = (client*)malloc(sizeof(client));
-        clients[i]->first_name = malloc(sizeof(char) * NAME_SIZE);
-        clients[i]->last_name = malloc(sizeof(char) * NAME_SIZE);
-        clients[i]->age = malloc(sizeof(char) * AGE_SIZE);
-        clients[i]->zip_code = malloc(sizeof(char) * ZIP_SIZE);
+        clients[i] = (client*)calloc(1, sizeof(client));
+        clients[i]->first_name = calloc(NAME_SIZE+1, sizeof(char));
+        clients[i]->last_name = calloc(NAME_SIZE+1, sizeof(char));
+        clients[i]->age = calloc(AGE_SIZE+1, sizeof(char));
+        clients[i]->zip_code = calloc(ZIP_SIZE+1, sizeof(char));
 
         if (!clients[i] || !clients[i]->first_name || !clients[i]->last_name || !clients[i]->age || !clients[i]->zip_code) {
             perror("Error allocating memory for client!");
@@ -45,13 +45,13 @@ void free_structs(client** clients, size_t size) {
 void store(client** clients, size_t pos, char* line) {
     char* chunk = strtok(line, ",");
     while (chunk != NULL) {
-        strcpy(clients[pos]->first_name, chunk);
+        strncpy(clients[pos]->first_name, chunk, NAME_SIZE);
         chunk = strtok(NULL, ",");
-        strcpy(clients[pos]->last_name, chunk);
+        strncpy(clients[pos]->last_name, chunk, NAME_SIZE);
         chunk = strtok(NULL, ",");
-        strcpy(clients[pos]->age, chunk);
+        strncpy(clients[pos]->age, chunk, AGE_SIZE-1);
         chunk = strtok(NULL, ",");
-        strcpy(clients[pos]->zip_code, chunk);
+        strncpy(clients[pos]->zip_code, chunk, ZIP_SIZE-1);
         chunk = strtok(NULL, ",");
     }
 }
