@@ -41,7 +41,7 @@ Funkcja zwraca wskaźnik na element tablicy **base**, pasujący do szukanego klu
 
 1.  ( 4 ) Proszę utworzyć strukturę `**Klient**`, zawierającą pola: `**f_name**` i `**l_name** `do przechowywania imienia i nazwiska, pole `**code**` do przechowywania kodu pocztowego w rzeczywistym formacie oraz pole `**age**`.  
     Następnie,proszę utworzyć tablicę 5 elementową struktur i wypełnić danymi wczytanymi z pliku tekstowego <coe>**dane.txt** - proszę wcześniej je przygotować.  
-    Tablicę proszę posortować według **nazwiska** (pierwszy klucz sortowania), a następnie według **imienia** (drugi klucz sortowania).</coe>
+    Tablicę proszę posortować według **nazwiska** (pierwszy klucz sortowania), a następnie według **imienia** (drugi klucz sortowania).
 
 4.  ( 4 ) Proszę skonstruować strukturę `**liczba**`, która ma dwa pola: `**zmienną znakową**` oraz `**unię**`.  
     Unia ma dwa pola: `**zmienną całkowitą**` oraz `**zmienną rzeczywistą**` podwójnej precyzji.  
