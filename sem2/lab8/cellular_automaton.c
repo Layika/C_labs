@@ -10,6 +10,12 @@
 #define BLACK 'x'
 #define WHITE '-'
 
+#define CHECK(x, msg) if (!(x)) \
+    do { \
+        puts(msg); \
+        exit(-1); \
+    } while(0)
+
 void display_automata(char* arr, size_t size) {
     for(size_t i = 0; i < size; ++i)
         printf("%c ", arr[i]);
@@ -68,16 +74,11 @@ int main() {
     // char* new_iteration = init_arr(SIZE, 1, WHITE, 21);
 
     char* current = malloc(sizeof(char) * SIZE);
-    if (!current) {
-        perror("Error allocating memory!");
-        exit(-1);
-    }
+    CHECK(current, "Error allocating memory!");
 
     char* new_iteration = malloc(sizeof(char) * SIZE);
-    if (!new_iteration) {
-        perror("Error allocating memory!");
-        exit(-1);
-    }
+    CHECK(new_iteration, "Error allocating memory!");
+    
     memset(current, WHITE, 10);
     memset(current+10, BLACK, 1);
     memset(current+11, WHITE, 10);
