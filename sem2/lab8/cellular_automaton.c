@@ -10,16 +10,15 @@
 #define BLACK 'x'
 #define WHITE '-'
 
-void print_arr(char* arr, size_t size) {
+void display_automata(char* arr, size_t size) {
     for(size_t i = 0; i < size; ++i)
         printf("%c ", arr[i]);
     printf("\n");
 }
 
-void fill_arr(char* first, char* second, int size, size_t times) {
+void process_automaton(char* current, char* new_iteration, int size) {
     char a, b, c;
     int idx;
-    size_t counter = times;
 
     char p1[PATTERN_SIZE] = { BLACK, BLACK, BLACK };
     char p2[PATTERN_SIZE] = { BLACK, BLACK, WHITE };
@@ -33,69 +32,68 @@ void fill_arr(char* first, char* second, int size, size_t times) {
     char* patterns[PATTERNS] = { p1, p2, p3, p4, p5, p6, p7, p8 };
     char elems[PATTERNS] = { WHITE, WHITE, WHITE, BLACK, BLACK, BLACK, BLACK, WHITE };
 
-    while (counter) {
-        for (int i = 0; i < size; i += 1) {
+    for (int i = 0; i < size; i += 1) {
 
-            if (i == 0) {
-                a = first[size-1];
-                b = first[i];
-                c = first[i+1];
-            }
-
-            else if (i == size - 1) {
-                a = first[size-1];
-                b = first[0];
-                c = first[1];
-            }
-
-            else {
-                a = first[i-1];
-                b = first[i];
-                c = first[i+1];
-            }
-
-            char pattern[PATTERN_SIZE] = { a, b, c };
-            for (int j = 0; j < PATTERNS; ++j) {
-                if (memcmp(pattern, patterns[j], PATTERN_SIZE) == 0)
-                    idx = j;
-            }
-            second[i] =  elems[idx];
+        if (i == 0) {
+            a = current[size-1];
+            b = current[i];
+            c = current[i+1];
         }
-        --counter;
-        memcpy(first, second, SIZE);
-        printf("%lu: ", counter);
-        print_arr(first, SIZE);
+
+        else if (i == size - 1) {
+            a = current[size-1];
+            b = current[0];
+            c = current[1];
+        }
+
+        else {
+            a = current[i-1];
+            b = current[i];
+            c = current[i+1];
+        }
+
+        char pattern[PATTERN_SIZE] = { a, b, c };
+        for (int j = 0; j < PATTERNS; ++j) {
+            if (memcmp(pattern, patterns[j], PATTERN_SIZE) == 0)
+                idx = j;
+        }
+        new_iteration[i] =  elems[idx];
     }
+    memcpy(current, new_iteration, SIZE);
 }
 
 int main() {
 
-    // char* first = init_arr(SIZE, 3, WHITE, 10, BLACK, 1, WHITE, 10);
-    // char* second = init_arr(SIZE, 1, WHITE, 21);
+    // char* current = init_arr(SIZE, 3, WHITE, 10, BLACK, 1, WHITE, 10);
+    // char* new_iteration = init_arr(SIZE, 1, WHITE, 21);
 
-    char* first = malloc(sizeof(char) * SIZE);
-    if (!first) {
+    char* current = malloc(sizeof(char) * SIZE);
+    if (!current) {
         perror("Error allocating memory!");
         exit(-1);
     }
 
-    char* second = malloc(sizeof(char) * SIZE);
-    if (!second) {
+    char* new_iteration = malloc(sizeof(char) * SIZE);
+    if (!new_iteration) {
         perror("Error allocating memory!");
         exit(-1);
     }
-    memset(first, WHITE, 10);
-    memset(first+10, BLACK, 1);
-    memset(first+11, WHITE, 10);
+    memset(current, WHITE, 10);
+    memset(current+10, BLACK, 1);
+    memset(current+11, WHITE, 10);
 
-    memset(second, WHITE, 21);
+    memset(new_iteration, WHITE, 21);
 
-    print_arr(first, SIZE);
-    print_arr(second, SIZE);
+    display_automata(current, SIZE);
+    display_automata(new_iteration, SIZE);
 
-    fill_arr(first, second, SIZE, TIMES);
+    size_t counter = 0;
+    while (counter++ < 100) {
+        process_automaton(current, new_iteration, SIZE);
+        display_automata(current, SIZE);
+    }
 
-    free(first);
-    free(second);
+    free(current);
+    free(new_iteration);
     return 0;
 }
