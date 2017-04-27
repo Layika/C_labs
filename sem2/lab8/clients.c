@@ -63,16 +63,20 @@ void print_clients(client** clients, size_t size) {
     }
 }
 
-int cmp_fname(const void* a, const void* b) {
+int cmp_f(const void* a, const void* b) {
     client* c1 = *(client**)a;
     client* c2 = *(client**)b;
     return strcmp((const char*)c1->first_name, (const char*)c2->first_name);
 }
 
-int cmp_lname(const void* a, const void* b) {
+int cmp_lf(const void* a, const void* b) {
     client* c1 = *(client**)a;
     client* c2 = *(client**)b;
-    return strcmp((const char*)c1->last_name, (const char*)c2->last_name);
+    int diff = strcmp((const char*)c1->last_name, (const char*)c2->last_name);
+    printf("%d\n", diff);
+    if (diff == 0)
+        diff = cmp_f(a, b);
+    return diff;
 }
 
 
@@ -101,12 +105,8 @@ int main () {
     }
 
     // print_clients(clients, CLIENTS_SIZE);
-    puts("Compare by first name:");
-    qsort(clients, CLIENTS_SIZE, sizeof(clients[0]), cmp_fname);
-    print_clients(clients, CLIENTS_SIZE);
-
-    puts("Compare by last name:");
-    qsort(clients, CLIENTS_SIZE, sizeof(clients[0]), cmp_lname);
+    puts("Sorted by last name:");
+    qsort(clients, CLIENTS_SIZE, sizeof(clients[0]), cmp_lf);
     print_clients(clients, CLIENTS_SIZE);
 
     free_structs(clients, CLIENTS_SIZE);

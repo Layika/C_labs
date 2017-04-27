@@ -102,12 +102,20 @@ int cmp_int(const void* a, const void* b) {
     return ((const int)n1->value.integer - (const int)n2->value.integer);
 }
 
-int  cmp_dbl(const void* a, const void* b) {
+int cmp_dbl(const void* a, const void* b) {
     number* n1 = (number*)a;
     number* n2 = (number*)b;
 
     double v = (((const double)n1->value.real > (const double)n2->value.real) - ((const double)n2->value.real > (const double)n1->value.real));
     return v < EPS? 0 : v;
+}
+
+size_t get_size(char* path) {
+    FILE* f = fopen(path, "r");
+    fseek(f, 0, SEEK_END);
+    size_t size = ftell(f);
+    fseek(f, 0, SEEK_SET);
+    return size;
 }
 
 void sort(number* numbers, size_t size) {
@@ -121,20 +129,23 @@ void sort(number* numbers, size_t size) {
 int main() {
     srand(time(NULL));
 
+    // fills structures and writes everything to a file
     number* numbers = malloc(SIZE * sizeof(number));
     CHECK_ALLOC(numbers);
-
     fill_structs(numbers, SIZE);
+    puts("Numbers to write:");
     print_numbers(numbers, SIZE);
-
     write_numbers(numbers, SIZE);
 
-    number* read_numbers = malloc(SIZE * sizeof(number));
+    // gets the number of elements in file and stores them inside another array
+    size_t check_size = get_size(PATH)/sizeof(number);
+    number* read_numbers = malloc(check_size * sizeof(number));
     CHECK_ALLOC(read_numbers);
+    get_numbers(read_numbers, check_size);
+    puts("Read numbers:");
+    print_numbers(read_numbers, check_size);
 
-    get_numbers(read_numbers, SIZE);
-    print_numbers(read_numbers, SIZE);
-
+    puts("Sorted numbers:");
     sort(numbers, SIZE);
     print_numbers(numbers, SIZE);
     free(numbers);
